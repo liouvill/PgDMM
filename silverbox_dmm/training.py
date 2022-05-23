@@ -380,7 +380,7 @@ def main(args,data_dict):
                 plt.plot(latent_est.data-V, color='orange',label = "error", lw=2)
             plt.plot(latent_est.data, color='b',label = "inference", lw=2)
             plt.ylabel(Ylabels[i], fontdict={'family' : 'Times New Roman', 'size' : 120})
-            plt.xlabel("$t$", fontdict={'family' : 'Times New Roman', 'size' : 120})
+            plt.xlabel("Time [sample]", fontdict={'family' : 'Times New Roman', 'size' : 120})
             plt.xticks(fontproperties = 'Times New Roman', size=120)
             plt.yticks(fontproperties = 'Times New Roman', size=120)
             if i == 0:
@@ -404,7 +404,7 @@ def main(args,data_dict):
                 plt.plot(V, color = "silver", label = "ground-truth", lw = 20)
             plt.plot(latent_est.data, color='b',label = "inference", lw=2)
             plt.ylabel(Ylabels[i], fontdict={'family' : 'Times New Roman', 'size' : 120})
-            plt.xlabel("$t$", fontdict={'family' : 'Times New Roman', 'size' : 120})
+            plt.xlabel("Time [sample]", fontdict={'family' : 'Times New Roman', 'size' : 120})
             plt.xticks(fontproperties = 'Times New Roman', size=120)
             plt.yticks(fontproperties = 'Times New Roman', size=120)     
             if i == 0:
@@ -430,7 +430,7 @@ def main(args,data_dict):
             plt.subplot(mm,1,i+1)
             plt.plot(obs_measured, color = "silver", lw = 20, label = "ground-truth")
             plt.plot(obs_est_loc.data, color = 'b', label = "inference observation", lw=2)
-            plt.xlabel("$t$", fontdict={'family' : 'Times New Roman', 'size' : 120})
+            plt.xlabel("Time [sample]", fontdict={'family' : 'Times New Roman', 'size' : 120})
             plt.ylabel(Ylabels_m[i], fontdict={'family' : 'Times New Roman', 'size' : 120})
             plt.xticks(fontproperties = 'Times New Roman', size=120)
             plt.yticks(fontproperties = 'Times New Roman', size=120)
@@ -522,7 +522,7 @@ def main(args,data_dict):
             plt.plot(latent_est_test.data, color='b',label = "inference", lw=2)
             
             plt.ylabel(Ylabels[i], fontdict={'family' : 'Times New Roman', 'size' : 120})
-            plt.xlabel("$t$", fontdict={'family' : 'Times New Roman', 'size' : 120})
+            plt.xlabel("Time [sample]", fontdict={'family' : 'Times New Roman', 'size' : 120})
             plt.xticks(fontproperties = 'Times New Roman', size=120)
             plt.yticks(fontproperties = 'Times New Roman', size=120)
             if i == 0:
@@ -545,7 +545,8 @@ def main(args,data_dict):
                     temp = np.max(np.abs(data_x[n_re,:,0]))
                     plt.plot(Z_loc_pos[n_re,:,0].data, color = "b",label = "inference ($z_1$)", lw=8)
                     plt.ylim([-1.5*temp, 1.5*temp])
-                    plt.xlabel("$t$", fontdict={'family' : 'Times New Roman', 'size' : 130})
+                    plt.xlabel("Time [sample]\n", fontdict={'family' : 'Times New Roman', 'size' : 130})
+                    plt.ylabel("displacement [V]", fontdict={'family' : 'Times New Roman', 'size' : 130})
                     plt.xticks(fontproperties = 'Times New Roman', size=135)
                     plt.yticks(fontproperties = 'Times New Roman', size=135) 
                     ax.legend(loc="lower left", bbox_to_anchor= (0.0, 1.1), ncol= 3, prop={'family' : 'Times New Roman', 'size' : 120})
@@ -555,7 +556,8 @@ def main(args,data_dict):
                     temp = np.max(np.abs(data_v[n_re,:,0]))
                     plt.plot(Z_loc_pos[n_re,:,1].data, color = "b",label = "inference ($z_2$)", lw=8)
                     plt.ylim([-1.5*temp, 1.5*temp])
-                    plt.xlabel("$t$", fontdict={'family' : 'Times New Roman', 'size' : 130})
+                    plt.xlabel("Time [sample]", fontdict={'family' : 'Times New Roman', 'size' : 130})
+                    plt.ylabel("velocity [V/s]", fontdict={'family' : 'Times New Roman', 'size' : 130})
                     plt.xticks(fontproperties = 'Times New Roman', size=135)
                     plt.yticks(fontproperties = 'Times New Roman', size=135) 
                     ax.legend(loc="lower left", bbox_to_anchor= (0.0, 1.1), ncol= 3, prop={'family' : 'Times New Roman', 'size' : 120})
@@ -566,14 +568,14 @@ def main(args,data_dict):
                 if i == 1:
                     plt.scatter(data_in, latent_x.data)
                     plt.plot(data_in,reg_1.predict(data_in.reshape(-1,1)),"r-",lw=4)
-                    plt.xlabel("true displacement", fontdict={'family' : 'Times New Roman', 'size' : 145})
+                    plt.xlabel("true displacement [V]", fontdict={'family' : 'Times New Roman', 'size' : 145})
                     plt.ylabel("$z_1$", fontdict={'family' : 'Times New Roman', 'size' : 145})
                     plt.xticks(fontproperties = 'Times New Roman', size=130)
                     plt.yticks(fontproperties = 'Times New Roman', size=130) 
                 if i == 3:
                     plt.scatter(V, latent_v.data)
                     plt.plot(V,reg_2.predict(V.reshape(-1,1)),"r-",lw=4)
-                    plt.xlabel("true velocity", fontdict={'family' : 'Times New Roman', 'size' : 145})
+                    plt.xlabel("true velocity [V/s]", fontdict={'family' : 'Times New Roman', 'size' : 145})
                     plt.ylabel("$z_2$", fontdict={'family' : 'Times New Roman', 'size' : 145})
                     plt.xticks(fontproperties = 'Times New Roman', size=130)
                     plt.yticks(fontproperties = 'Times New Roman', size=130) 
@@ -604,7 +606,8 @@ def main(args,data_dict):
                     temp = np.max(np.abs(data_x_test[n_re,:,0]))
                     plt.plot(Z_loc_pos_test[n_re,:,0].data, color = "b",label = "inference ($z_1$)", lw=8)
                     plt.ylim([-1.5*temp, 1.5*temp])
-                    plt.xlabel("$t$", fontdict={'family' : 'Times New Roman', 'size' : 130})
+                    plt.xlabel("Time [sample]\n", fontdict={'family' : 'Times New Roman', 'size' : 130})
+                    plt.ylabel("displacement [V]", fontdict={'family' : 'Times New Roman', 'size' : 130})
                     plt.xticks(fontproperties = 'Times New Roman', size=135)
                     plt.yticks(fontproperties = 'Times New Roman', size=135) 
                     ax.legend(loc="lower left", bbox_to_anchor= (0.0, 1.1), ncol= 3, prop={'family' : 'Times New Roman', 'size' : 120})
@@ -614,7 +617,8 @@ def main(args,data_dict):
                     temp = np.max(np.abs(data_v_test[n_re,:,0]))
                     plt.plot(Z_loc_pos_test[n_re,:,1].data, color = "b",label = "inference ($z_2$)", lw=8)
                     plt.ylim([-1.5*temp, 1.5*temp])
-                    plt.xlabel("$t$", fontdict={'family' : 'Times New Roman', 'size' : 130})
+                    plt.xlabel("Time [sample]", fontdict={'family' : 'Times New Roman', 'size' : 130})
+                    plt.ylabel("velocity [V/s]", fontdict={'family' : 'Times New Roman', 'size' : 130})
                     plt.xticks(fontproperties = 'Times New Roman', size=135)
                     plt.yticks(fontproperties = 'Times New Roman', size=135) 
                     ax.legend(loc="lower left", bbox_to_anchor= (0.0, 1.1), ncol= 3, prop={'family' : 'Times New Roman', 'size' : 120})
@@ -625,14 +629,14 @@ def main(args,data_dict):
                 if i == 1:
                     plt.scatter(data_in_test, latent_x_test.data)
                     plt.plot(data_in_test,reg_1_test.predict(data_in_test.reshape(-1,1)),"r-",lw=4)
-                    plt.xlabel("true displacement", fontdict={'family' : 'Times New Roman', 'size' : 145})
+                    plt.xlabel("true displacement [V]", fontdict={'family' : 'Times New Roman', 'size' : 145})
                     plt.ylabel("$z_1$", fontdict={'family' : 'Times New Roman', 'size' : 145})
                     plt.xticks(fontproperties = 'Times New Roman', size=130)
                     plt.yticks(fontproperties = 'Times New Roman', size=130) 
                 if i == 3:
                     plt.scatter(V_test, latent_v_test.data)
                     plt.plot(V_test,reg_2_test.predict(V_test.reshape(-1,1)),"r-",lw=4)
-                    plt.xlabel("true velocity", fontdict={'family' : 'Times New Roman', 'size' : 145})
+                    plt.xlabel("true velocity [V/s]", fontdict={'family' : 'Times New Roman', 'size' : 145})
                     plt.ylabel("$z_2$", fontdict={'family' : 'Times New Roman', 'size' : 145})
                     plt.xticks(fontproperties = 'Times New Roman', size=130)
                     plt.yticks(fontproperties = 'Times New Roman', size=130) 
@@ -662,14 +666,14 @@ def main(args,data_dict):
         plt.tight_layout()
         plt.close()
 
-        fig10 = plt.figure(figsize=(40,28))
+        fig10 = plt.figure(figsize=(40,30))
         plt.ioff()
         for i in range(2):
             ax = plt.subplot(2,1,i+1)
             if i == 0:
                 plt.plot(data_v[n_re,:,0], data_x[n_re,:,0],color='silver',lw=10,label = "ground-truth")
-                plt.xlabel("velocity", fontdict={'family' : 'Times New Roman', 'size' : 120})
-                plt.ylabel("displacement", fontdict={'family' : 'Times New Roman', 'size' : 120})
+                plt.xlabel("velocity [V/s]", fontdict={'family' : 'Times New Roman', 'size' : 120})
+                plt.ylabel("displacement [V]", fontdict={'family' : 'Times New Roman', 'size' : 120})
             elif i == 1:
                 plt.plot(Z_loc_pos[n_re,:,1].data, Z_loc_pos[n_re,:,0].data,color='blue',lw=10,label = "inference")
                 plt.xlabel("$z_2$", fontdict={'family' : 'Times New Roman', 'size' : 120})
@@ -681,18 +685,18 @@ def main(args,data_dict):
             if i == 0:
                 ax.set_title("Ground-truth", fontdict={'family' : 'Times New Roman', 'size' : 125})
             if i == 1:
-                ax.set_title("Inference", fontdict={'family' : 'Times New Roman', 'size' : 125})
+                ax.set_title("\n Inference", fontdict={'family' : 'Times New Roman', 'size' : 125})
         plt.tight_layout()
         plt.close()
 
-        fig11 = plt.figure(figsize=(40,28))
+        fig11 = plt.figure(figsize=(40,30))
         plt.ioff()
         for i in range(2):
             ax = plt.subplot(2,1,i+1)
             if i == 0:
                 plt.plot(data_v_test[n_re,:,0], data_x_test[n_re,:,0],color='silver',lw=10,label = "ground-truth")
-                plt.xlabel("velocity", fontdict={'family' : 'Times New Roman', 'size' : 120})
-                plt.ylabel("displacement", fontdict={'family' : 'Times New Roman', 'size' : 120})
+                plt.xlabel("velocity [V/s]", fontdict={'family' : 'Times New Roman', 'size' : 120})
+                plt.ylabel("displacement [V]", fontdict={'family' : 'Times New Roman', 'size' : 120})
             elif i == 1:
                 plt.plot(Z_loc_pos_test[n_re,:,1].data, Z_loc_pos_test[n_re,:,0].data,color='blue',lw=10,label = "inference")
                 plt.xlabel("$z_2$", fontdict={'family' : 'Times New Roman', 'size' : 120})
@@ -704,7 +708,7 @@ def main(args,data_dict):
             if i == 0:
                 ax.set_title("Ground-truth", fontdict={'family' : 'Times New Roman', 'size' : 125})
             if i == 1:
-                ax.set_title("Inference", fontdict={'family' : 'Times New Roman', 'size' : 125})
+                ax.set_title("\n Inference", fontdict={'family' : 'Times New Roman', 'size' : 125})
         plt.tight_layout()
         plt.close()
         
