@@ -10,12 +10,14 @@ PgDMM is a hybrid modeling framework for unsupervised learning and identificatio
 
 ## Repository Overview
  * `silverbox_pgdmm` - Codes for implementing PgDMM on Silverbox benchmark.
+   * `SNLS80mV.mat` - Silverbox benchmark data.
    * `data_loader.py` - Functions for loading and processing raw data.
    * `loss.py` - Analytical loss functions.
    * `models.py` - PgDMM models.
    * `training.py` - Manages training and evaluation of models.
    * `silverbox_main.py` - Configuration for training PgDMM models on Silverbox benchmark.
  * `silverbox_dmm` - Codes for implementing DMM on Silverbox benchmark.
+   * `SNLS80mV.mat` - Silverbox benchmark data.
    * `data_loader.py` - Functions for loading and processing raw data.
    * `loss.py` - Analytical loss functions.
    * `models.py` - DMM models.
